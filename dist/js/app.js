@@ -10,9 +10,9 @@
 //Capítulo 3
 import { NegociacaoController } from "./controllers/negociacao-controller.js";
 const controller = new NegociacaoController();
-const form = document.querySelector('.form');
-form.addEventListener('submit', event => {
-    //(event: Event), por baixo dos panos. 
+const form = document.querySelector(".form");
+form.addEventListener("submit", (event) => {
+    //(event: Event), por baixo dos panos.
     //Mas automaticamente já é inferido que a função é baseada num evento do tipo submit
     //Por conta do addEventListenner
     event.preventDefault();
