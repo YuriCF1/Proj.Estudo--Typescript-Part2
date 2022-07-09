@@ -65,6 +65,7 @@ export class NegociacaoController {
         
         this.negociacoes.adicionaTrade(trader)
         console.log(this.negociacoes.listagem());
+        // this.negociacoes.listagem().pop();
         this.limparFormulario()
     }
 
