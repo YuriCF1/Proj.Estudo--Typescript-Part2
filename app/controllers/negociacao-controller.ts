@@ -1,5 +1,5 @@
-import { Negociacao } from "../models/negociacao.js";
-import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
+import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -14,9 +14,15 @@ export class NegociacaoController {
 
     //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
     // private negociacoes: Negociacoes = new Negociacoes()
-    private negociacoes = new Negociacoes()
+    private negociacoes = new TodasNegociacoes()
     
     //Pega os dados dos inputs do HTML
+    //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
+    //Se houver argumento, o TS vai pedir tais argumento na parte de app.ts
+
+    //Argumento são necessários na hora de chamar a função/classe
+
+    //Quando a classe NegociacaoController for chamada, ela usará o 'constructor' para pegar os dados
     constructor() {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
@@ -46,7 +52,7 @@ export class NegociacaoController {
 
     //____________Organizing the code above, to make it more clear___________
    
-    pegaValor(): Negociacao {
+    pegaValor(): NegociacaoFeita {
     //Tipando também o método para garantir que ele sempre volte negociacao
     //E não outro valor que eu coloque por acidente
         const exp = /-/g;
@@ -54,15 +60,15 @@ export class NegociacaoController {
         const date = new Date(this.inputData.value.replace(exp, ','));
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
-        
-        return new Negociacao(date, quantidade, valor);
+        return new NegociacaoFeita(date, quantidade, valor);
 
     }
 
     adiciona(): void {
         const trader = this.pegaValor();
         // console.log(trader);
-        
+        const novaData = trader.data.setTime(10)
+        console.log(novaData);    
         this.negociacoes.adicionaTrade(trader)
         console.log(this.negociacoes.listagem());
         // this.negociacoes.listagem().pop();

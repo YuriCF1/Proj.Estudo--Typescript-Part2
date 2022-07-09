@@ -4,6 +4,7 @@ export class TodasNegociacoes {
         //Essa é a ferramente 'generics'
         //Por padrão, o tipo é 'any', mas com a config 'noimplicityany' ativada, tenho que fazer isso
         //Esse array agora só aceitará itens que correspondam a classe "Negociação"
+        // private Todasnegociacoes: Array<NegociacaoFeita> = [];
         this.Todasnegociacoes = [];
         //Métodos antigos
         //     // return this.Todasnegociacoes
@@ -15,6 +16,7 @@ export class TodasNegociacoes {
     adicionaTrade(trade) {
         this.Todasnegociacoes.push(trade);
     }
+    // listagem(): ReadonlyArray<NegociacaoFeita>{
     listagem() {
         //ReadonlyArray proibe qualquer modificação, inclusive chamar o '.pop'
         return this.Todasnegociacoes;
