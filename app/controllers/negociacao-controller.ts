@@ -1,4 +1,5 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -10,7 +11,12 @@ export class NegociacaoController {
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
+
+    //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
+    // private negociacoes: Negociacoes = new Negociacoes()
+    private negociacoes = new Negociacoes()
     
+    //Pega os dados dos inputs do HTML
     constructor() {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
@@ -39,9 +45,10 @@ export class NegociacaoController {
     // }
 
     //____________Organizing the code above, to make it more clear___________
+   
+    pegaValor(): Negociacao {
     //Tipando também o método para garantir que ele sempre volte negociacao
     //E não outro valor que eu coloque por acidente
-    criaNegociacao(): Negociacao {
         const exp = /-/g;
 
         const date = new Date(this.inputData.value.replace(exp, ','));
@@ -53,11 +60,15 @@ export class NegociacaoController {
     }
 
     adiciona(): void {
-        const negociacao = this.criaNegociacao();
-        console.log(negociacao);
+        const trader = this.pegaValor();
+        // console.log(trader);
+        
+        this.negociacoes.adicionaTrade(trader)
+        console.log(this.negociacoes.listagem());
         this.limparFormulario()
     }
 
+    //Limpa o formulário e dá foco no primeiro valor
     limparFormulario(): void {
         this.inputData.value = '';
         this.inputQuantidade.value = '';
