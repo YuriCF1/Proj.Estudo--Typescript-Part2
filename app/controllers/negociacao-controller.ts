@@ -1,5 +1,7 @@
 import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
+//_________________________PARTE 2____________________
+import { NegociacoesView } from "../views/negociacoes-view.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -15,7 +17,11 @@ export class NegociacaoController {
     //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
     // private negociacoes: Negociacoes = new Negociacoes()
     private negociacoes = new TodasNegociacoes()
-    
+    //_________________________PARTE 2____________________
+    private negociacoesView = new NegociacoesView('#negociacoesView');
+
+
+
     //Pega os dados dos inputs do HTML
     //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
     //Se houver argumento, o TS vai pedir tais argumento na parte de app.ts
@@ -27,7 +33,11 @@ export class NegociacaoController {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
- 
+        //_________________________PARTE 2____________________
+        this.negociacoesView.template();
+        this.negociacoesView.atualizaTela();
+
+
     }
 
     // adiciona() {
@@ -45,16 +55,16 @@ export class NegociacaoController {
     //     const date = new Date(this.inputData.value.replace(exp, ','));
     //     const quantidade = parseInt(this.inputQuantidade.value);
     //     const valor = parseFloat(this.inputValor.value);
-        
+
     //     const negociacao = new Negociacao(date, quantidade, valor);
     //     console.log(negociacao);
     // }
 
     //____________Organizing the code above, to make it more clear___________
-   
+
     pegaValor(): NegociacaoFeita {
-    //Tipando também o método para garantir que ele sempre volte negociacao
-    //E não outro valor que eu coloque por acidente
+        //Tipando também o método para garantir que ele sempre volte negociacao
+        //E não outro valor que eu coloque por acidente
         const exp = /-/g;
 
         const date = new Date(this.inputData.value.replace(exp, ','));
@@ -68,7 +78,7 @@ export class NegociacaoController {
         const trader = this.pegaValor();
         // console.log(trader);
         const novaData = trader.data.setTime(10)
-        console.log(novaData);    
+        console.log(novaData);
         this.negociacoes.adicionaTrade(trader)
         console.log(this.negociacoes.listagem());
         // this.negociacoes.listagem().pop();
@@ -83,5 +93,4 @@ export class NegociacaoController {
 
         this.inputData.focus();
     }
-    
 }

@@ -21,3 +21,11 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   controller.adiciona();
 });
+
+//______________________________________PARTE 2___________________
+
+//Exemplo feito para aparecer o template no console. Após isso, foi feito pelo modo do template diretamente no controller
+import { NegociacoesView } from "./views/negociacoes-view.js";
+// const negociacoesView = new NegociacoesView();
+// const template = negociacoesView.template();
+// console.log(template)

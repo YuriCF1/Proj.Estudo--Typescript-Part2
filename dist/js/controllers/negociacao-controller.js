@@ -1,5 +1,7 @@
 import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
+//_________________________PARTE 2____________________
+import { NegociacoesView } from "../views/negociacoes-view.js";
 //Exporing the main class
 export class NegociacaoController {
     //Pega os dados dos inputs do HTML
@@ -11,9 +13,14 @@ export class NegociacaoController {
         //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
         // private negociacoes: Negociacoes = new Negociacoes()
         this.negociacoes = new TodasNegociacoes();
+        //_________________________PARTE 2____________________
+        this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
+        //_________________________PARTE 2____________________
+        this.negociacoesView.template();
+        this.negociacoesView.atualizaTela();
     }
     // adiciona() {
     //     const negociacao = new Negociacao(
