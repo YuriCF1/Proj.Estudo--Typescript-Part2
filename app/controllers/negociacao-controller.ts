@@ -2,6 +2,7 @@ import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 //_________________________PARTE 2____________________
 import { NegociacoesView } from "../views/negociacoes-view.js";
+import { MensagemView } from "../views/mensagem-view.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -19,8 +20,7 @@ export class NegociacaoController {
     private negociacoesTodas = new TodasNegociacoes()
     //_________________________PARTE 2____________________
     private negociacoesView = new NegociacoesView('#negociacoesView');
-
-
+    private mensagemView = new MensagemView('#mensagemView');
 
     //Pega os dados dos inputs do HTML
     //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
@@ -85,6 +85,7 @@ export class NegociacaoController {
         //______________________________________PARTE 2___________________
         //Atualizando a tela com a string da lista de negociações usando o template string
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
+        this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
     }
 
     //Limpa o formulário e dá foco no primeiro valor

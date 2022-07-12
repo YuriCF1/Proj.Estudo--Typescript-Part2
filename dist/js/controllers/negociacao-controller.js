@@ -2,6 +2,7 @@ import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 //_________________________PARTE 2____________________
 import { NegociacoesView } from "../views/negociacoes-view.js";
+import { MensagemView } from "../views/mensagem-view.js";
 //Exporing the main class
 export class NegociacaoController {
     //Pega os dados dos inputs do HTML
@@ -15,6 +16,7 @@ export class NegociacaoController {
         this.negociacoesTodas = new TodasNegociacoes();
         //_________________________PARTE 2____________________
         this.negociacoesView = new NegociacoesView('#negociacoesView');
+        this.mensagemView = new MensagemView('#mensagemView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
@@ -60,6 +62,7 @@ export class NegociacaoController {
         //______________________________________PARTE 2___________________
         //Atualizando a tela com a string da lista de negociações usando o template string
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
+        this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
     }
     //Limpa o formulário e dá foco no primeiro valor
     limparFormulario() {

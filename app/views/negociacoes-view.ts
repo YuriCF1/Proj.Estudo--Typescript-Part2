@@ -7,7 +7,8 @@ export class NegociacoesView {
         this.elemento = document.querySelector(seletorHTML)
 
     }
-
+    
+    // Intl = um formatador de parâmetro globlais. DateTimeFormat('en-US'), padrão é da localização do navegador
     template(modelo: TodasNegociacoes): string {
         return `
             <table class="table table-hover table-bordered"
@@ -22,7 +23,6 @@ export class NegociacoesView {
                 ${modelo.listagem().map(itemNegociado => {
                   return `
                   <tr>
-                  // Intl = um formatador de parâmetro globlais. DateTimeFormat('en-US'), padrão é da localização do navegador
                       <td>${new Intl.DateTimeFormat().format(itemNegociado.data)}</td>
                       <td>${itemNegociado.quantidade}</td>
                       <td>${itemNegociado.valor}</td>
