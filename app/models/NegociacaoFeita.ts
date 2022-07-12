@@ -97,7 +97,7 @@ export class NegociacaoFeita {
     //Programação defensiva
     get data(): Date {
         const dataClone = new Date(this._data.getTime());
-        console.log(this._data);
+        // console.log(this._data);
         return dataClone;
         // return this._data;
 

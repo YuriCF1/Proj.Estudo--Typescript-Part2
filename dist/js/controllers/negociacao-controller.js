@@ -12,15 +12,15 @@ export class NegociacaoController {
     constructor() {
         //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
         // private negociacoes: Negociacoes = new Negociacoes()
-        this.negociacoes = new TodasNegociacoes();
+        this.negociacoesTodas = new TodasNegociacoes();
         //_________________________PARTE 2____________________
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
         //_________________________PARTE 2____________________
-        this.negociacoesView.template();
-        this.negociacoesView.atualizaTela();
+        // this.negociacoesView.template();
+        this.negociacoesView.atualizaTela(this.negociacoesTodas);
     }
     // adiciona() {
     //     const negociacao = new Negociacao(
@@ -52,11 +52,14 @@ export class NegociacaoController {
         const trader = this.pegaValor();
         // console.log(trader);
         const novaData = trader.data.setTime(10);
-        console.log(novaData);
-        this.negociacoes.adicionaTrade(trader);
-        console.log(this.negociacoes.listagem());
+        // console.log(novaData);
+        this.negociacoesTodas.adicionaTrade(trader);
+        // console.log(this.negociacoesTodas.listagem());
         // this.negociacoes.listagem().pop();
         this.limparFormulario();
+        //______________________________________PARTE 2___________________
+        //Atualizando a tela com a string da lista de negociações usando o template string
+        this.negociacoesView.atualizaTela(this.negociacoesTodas);
     }
     //Limpa o formulário e dá foco no primeiro valor
     limparFormulario() {
