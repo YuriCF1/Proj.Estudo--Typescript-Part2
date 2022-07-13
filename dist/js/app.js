@@ -21,3 +21,6 @@ form.addEventListener("submit", (event) => {
 // const negociacoesView = new NegociacoesView();
 // const template = negociacoesView.template();
 // console.log(template)
+// A view sendo 'abstract' não pode ser instanciada diretamente, apenas dentro de uma classe filha
+// const view = new View ('algumseletor')
+// view.atualizaTela('qualquer coisa')
