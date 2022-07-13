@@ -1,11 +1,14 @@
-export class MensagemView {
-    
-    private elemento: HTMLElement;
+import { View } from "./view.js";
 
-    constructor(seletor: string) {
-        this.elemento = document.querySelector(seletor)
+// export class MensagemView extends View {
+export class MensagemView extends View<string> {
+    // Repetição de código, resolvida no arquivo view.ts, com método 'extends'
 
-    }
+    // private elemento: HTMLElement;
+    // constructor(seletor: string) {
+    //     this.elemento = document.querySelector(seletor)
+
+    // }
     
     template(modelo: string): string {
         return `
@@ -14,8 +17,10 @@ export class MensagemView {
         `
     }
 
-    atualizaTela(modelo: string): void {
-        const template = this.template(modelo)
-        this.elemento.innerHTML = template;
-    }
 }
+
+//     atualizaTela(modelo: string): void {
+//         const template = this.template(modelo)
+//         this.elemento.innerHTML = template;
+//     }
+// }
