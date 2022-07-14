@@ -17,7 +17,8 @@ export class NegociacoesView extends View<TodasNegociacoes> {
     // }
     
     // Intl = um formatador de parâmetro globlais. DateTimeFormat('en-US'), padrão é da localização do navegador
-    template(modelo: TodasNegociacoes): string {
+    //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
+    protected template(modelo: TodasNegociacoes): string {
         return `
             <table class="table table-hover table-bordered"
                 <thead>

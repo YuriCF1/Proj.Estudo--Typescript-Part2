@@ -14,12 +14,14 @@ export abstract class View<T> {
 
     }
 
-    atualizaTela(modelo: T): void {
+    //public é sempre o padrão, caso nada seja escrito
+    public atualizaTela(modelo: T): void {
         const template = this.template(modelo)
         this.elemento.innerHTML = template;
     }
 
-    abstract template(modelo: T): string;
+    //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
+    protected abstract template(modelo: T): string;
 }
 // template(modelo: string): string {
 //     template(modelo: T): string {

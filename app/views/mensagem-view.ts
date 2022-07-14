@@ -10,7 +10,8 @@ export class MensagemView extends View<string> {
 
     // }
     
-    template(modelo: string): string {
+    //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
+    protected template(modelo: string): string {
         return `
             <p class="alert alert-info">${modelo}</p>
 

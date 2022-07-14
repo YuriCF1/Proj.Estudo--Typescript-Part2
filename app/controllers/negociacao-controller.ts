@@ -86,6 +86,7 @@ export class NegociacaoController {
         //Atualizando a tela com a string da lista de negociações usando o template string
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
         this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
+    
     }
 
     //Limpa o formulário e dá foco no primeiro valor
