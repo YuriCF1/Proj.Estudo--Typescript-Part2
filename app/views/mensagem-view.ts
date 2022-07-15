@@ -17,7 +17,6 @@ export class MensagemView extends View<string> {
 
         `
     }
-
 }
 
 //     atualizaTela(modelo: string): void {
