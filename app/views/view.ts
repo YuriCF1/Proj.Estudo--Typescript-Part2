@@ -14,7 +14,7 @@ export abstract class View<T> {
 
     }
 
-    //public é sempre o padrão, caso nada seja escrito
+    //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
         const template = this.template(modelo)
         this.elemento.innerHTML = template;
