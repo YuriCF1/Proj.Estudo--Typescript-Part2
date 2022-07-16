@@ -6,6 +6,7 @@ export class MensagemView extends View {
     // constructor(seletor: string) {
     //     this.elemento = document.querySelector(seletor)
     // }
+    //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
     template(modelo) {
         return `
             <p class="alert alert-info">${modelo}</p>

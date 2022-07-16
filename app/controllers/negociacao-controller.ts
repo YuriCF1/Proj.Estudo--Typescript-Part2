@@ -3,6 +3,7 @@ import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 //_________________________PARTE 2____________________
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { MensagemView } from "../views/mensagem-view.js";
+import { DiasDaSemana } from "../enums/dias-da-semana.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -21,6 +22,9 @@ export class NegociacaoController {
     //_________________________PARTE 2____________________
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
+
+    private readonly SABADO = 6;
+    private readonly DOMINGO = 0
 
     //Pega os dados dos inputs do HTML
     //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
@@ -75,11 +79,18 @@ export class NegociacaoController {
 
     public adiciona(): void {
         const trader = this.pegaValor();
+
+        //______________________________________PARTE 2___________________
+        if (!this.ehDiautil(trader.data)) {
+            this.mensagemView.atualizaTela('Apenas Negociações em dias úteis são aceitas')
+            return
+        }
+
         this.negociacoesTodas.adicionaTrade(trader)
         
         //Teste
         // const novaData = trader.data.setTime(10)
-        // console.log(this.negociacoesTodas.listagem());
+        // console.log(this.negociacoesTodas.listagem()); 
         // this.negociacoes.listagem().pop();
 
         this.limparFormulario()
@@ -90,7 +101,29 @@ export class NegociacaoController {
         // this.negociacoesView.atualizaTela(this.negociacoesTodas);
         // this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
         // this.negociacoesView.atualizaTela(this.negociacoesTodas);
-    
+
+        // if (trader.data.getDay() > 0 && trader.data.getDay() < 6 ) {
+        // Constante se coloca em letra maíuscula
+        // if (trader.data.getDay() > this.DOMINGO && trader.data.getDay() < this.SABADO ) {
+        //     this.negociacoesTodas.adicionaTrade(trader)
+
+        //     this.limparFormulario()
+        //     this.atualizaView();
+
+        // } else {
+        //     this.mensagemView.atualizaTela('Apenas Negociações em dias úteis são aceitas')
+
+        // }
+        
+      
+    }
+
+    // Parte 2
+    private ehDiautil(data: Date) {
+        // return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
+        return data.getDay() > DiasDaSemana.DOMINGO && 
+                data.getDay() < DiasDaSemana.SABADO
+
     }
 
     //Limpa o formulário e dá foco no primeiro valor

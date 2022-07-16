@@ -7,6 +7,7 @@ export class View {
     constructor(seletor) {
         this.elemento = document.querySelector(seletor);
     }
+    //Public é sempre o padrão, caso nada seja escrito
     atualizaTela(modelo) {
         const template = this.template(modelo);
         this.elemento.innerHTML = template;

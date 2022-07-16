@@ -10,7 +10,9 @@ export class NegociacoesView extends View {
     //     this.elemento = document.querySelector(seletorHTML)
     // }
     // Intl = um formatador de parâmetro globlais. DateTimeFormat('en-US'), padrão é da localização do navegador
+    //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
     template(modelo) {
+        //Antes estava assim <td>${new Intl.DateTimeFormat().format(itemNegociado.data)}</td>
         return `
             <table class="table table-hover table-bordered"
                 <thead>
@@ -24,14 +26,24 @@ export class NegociacoesView extends View {
                 ${modelo.listagem().map(itemNegociado => {
             return `
                   <tr>
-                      <td>${new Intl.DateTimeFormat().format(itemNegociado.data)}</td>
-                      <td>${itemNegociado.quantidade}</td>
-                      <td>${itemNegociado.valor}</td>
+                    <td>${this.converterData(itemNegociado.data)}</td>
+                    <td>${itemNegociado.quantidade}</td>
+                    <td>${itemNegociado.valor}</td>
                   </tr>
                   `;
         }).join('')}
                 </tbody>
             </table>
         `;
+    }
+    //Código repetido, foi parar em view.ts
+    // atualizaTela(modelo: TodasNegociacoes): void {
+    //     const template = this.template(modelo);
+    //     this.elemento.innerHTML = template;
+    //     // console.log(template);
+    // }
+    //Deixando o template mais limpo
+    converterData(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }
