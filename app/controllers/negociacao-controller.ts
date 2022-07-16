@@ -61,7 +61,7 @@ export class NegociacaoController {
 
     //____________Organizing the code above, to make it more clear___________
 
-    pegaValor(): NegociacaoFeita {
+    private pegaValor(): NegociacaoFeita {
         //Tipando também o método para garantir que ele sempre volte negociacao
         //E não outro valor que eu coloque por acidente
         const exp = /-/g;
@@ -73,28 +73,36 @@ export class NegociacaoController {
 
     }
 
-    adiciona(): void {
+    public adiciona(): void {
         const trader = this.pegaValor();
-        // console.log(trader);
-        const novaData = trader.data.setTime(10)
-        // console.log(novaData);
         this.negociacoesTodas.adicionaTrade(trader)
+        
+        //Teste
+        // const novaData = trader.data.setTime(10)
         // console.log(this.negociacoesTodas.listagem());
         // this.negociacoes.listagem().pop();
+
         this.limparFormulario()
+        this.atualizaView();
         //______________________________________PARTE 2___________________
         //Atualizando a tela com a string da lista de negociações usando o template string
-        this.negociacoesView.atualizaTela(this.negociacoesTodas);
-        this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
+        //Separando a responsabilidade, centralizando as atualizações da view. Movi esses métodos para 'atualizaView'
+        // this.negociacoesView.atualizaTela(this.negociacoesTodas);
+        // this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
+        // this.negociacoesView.atualizaTela(this.negociacoesTodas);
     
     }
 
     //Limpa o formulário e dá foco no primeiro valor
-    limparFormulario(): void {
+    private limparFormulario(): void {
         this.inputData.value = '';
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
-
         this.inputData.focus();
+    }
+
+    private atualizaView() :void {
+        this.negociacoesView.atualizaTela(this.negociacoesTodas);
+        this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
     }
 }

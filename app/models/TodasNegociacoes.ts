@@ -8,13 +8,13 @@ export class TodasNegociacoes {
 
     // private Todasnegociacoes: Array<NegociacaoFeita> = [];
     private Todasnegociacoes: NegociacaoFeita[] = [];
-    adicionaTrade(trade: NegociacaoFeita) {
+    public adicionaTrade(trade: NegociacaoFeita) {
         this.Todasnegociacoes.push(trade)
 
     }
 
     // listagem(): ReadonlyArray<NegociacaoFeita>{
-    listagem(): readonly NegociacaoFeita[] {
+    public listagem(): readonly NegociacaoFeita[] {
         //ReadonlyArray proibe qualquer modificação, inclusive chamar o '.pop'
         return this.Todasnegociacoes;
 
@@ -27,7 +27,6 @@ export class TodasNegociacoes {
     //     //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     //     //https://www.youtube.com/watch?v=Uft_UkXtqT0&ab_channel=DevPleno
     //     // return [...this.Todasnegociacoes]
-
 }
 
 // const Todasnegociacoes = new TodasNegociacoes();
