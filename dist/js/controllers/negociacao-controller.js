@@ -6,6 +6,9 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 //Exporing the main class
 export class NegociacaoController {
+    //É melhor usar o enumeration para todar essas constancias de uso universais
+    // private readonly SABADO = 6;
+    // private readonly DOMINGO = 0
     //Pega os dados dos inputs do HTML
     //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
     //Se houver argumento, o TS vai pedir tais argumento na parte de app.ts
@@ -18,8 +21,6 @@ export class NegociacaoController {
         //_________________________PARTE 2____________________
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
-        this.SABADO = 6;
-        this.DOMINGO = 0;
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
@@ -54,7 +55,9 @@ export class NegociacaoController {
         return new NegociacaoFeita(date, quantidade, valor);
     }
     adiciona() {
-        const trader = this.pegaValor();
+        // const trader = this.pegaValor();
+        const negociacaoString = new NegociacaoFeita(null, 0, 0);
+        const trader = negociacaoString.pegaString(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         //______________________________________PARTE 2___________________
         if (!this.ehDiautil(trader.data)) {
             this.mensagemView.atualizaTela('Apenas Negociações em dias úteis são aceitas');
@@ -82,6 +85,8 @@ export class NegociacaoController {
         // } else {
         //     this.mensagemView.atualizaTela('Apenas Negociações em dias úteis são aceitas')
         // }
+        //_________________________PARTE 2 - Cap.3____________________
+        //Fazendo a negociação ser inserida até se for por um arquivo de texto
     }
     // Parte 2
     ehDiautil(data) {

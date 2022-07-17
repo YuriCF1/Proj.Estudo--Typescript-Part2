@@ -23,8 +23,9 @@ export class NegociacaoController {
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
 
-    private readonly SABADO = 6;
-    private readonly DOMINGO = 0
+    //É melhor usar o enumeration para todar essas constancias de uso universais
+    // private readonly SABADO = 6;
+    // private readonly DOMINGO = 0
 
     //Pega os dados dos inputs do HTML
     //Não precisa de argumentos, já que a classe serve para chamar outras funções dentro dela
@@ -74,11 +75,17 @@ export class NegociacaoController {
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
         return new NegociacaoFeita(date, quantidade, valor);
-
+    
     }
 
     public adiciona(): void {
-        const trader = this.pegaValor();
+        // const trader = this.pegaValor();
+        const negociacaoString = new NegociacaoFeita(null, 0, 0);
+        const trader = negociacaoString.pegaString(
+            this.inputData.value, 
+            this.inputQuantidade.value,
+            this.inputValor.value
+        )
 
         //______________________________________PARTE 2___________________
         if (!this.ehDiautil(trader.data)) {
@@ -115,7 +122,10 @@ export class NegociacaoController {
 
         // }
         
-      
+        //_________________________PARTE 2 - Cap.3____________________
+        //Fazendo a negociação ser inserida até se for por um arquivo de texto
+       
+
     }
 
     // Parte 2

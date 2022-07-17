@@ -75,4 +75,14 @@ export class NegociacaoFeita {
         return dataClone;
         // return this._data;
     }
+    // Criando a negociação através de um arquivode texto. Strings
+    pegaString(dataString, quantidadeString, valorString) {
+        //Tipando também o método para garantir que ele sempre volte negociacao
+        //E não outro valor que eu coloque por acidente
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new NegociacaoFeita(date, quantidade, valor);
+    }
 }
