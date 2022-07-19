@@ -8,15 +8,30 @@ export abstract class View<T> {
     // private elemento: HTMLElement;
     protected elemento: HTMLElement;
 
+    // private escapar: boolean = false;
+    private escapar = false;
+
     // constructor(seletor: string) {
-    constructor(seletor: string) {
+    constructor(seletor: string, escapar?: boolean) {
         this.elemento = document.querySelector(seletor)
+        if(escapar) {
+            this.escapar = escapar;
+
+        }
+
 
     }
 
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
-        const template = this.template(modelo)
+        // const template = this.template(modelo)
+        let template = this.template(modelo);
+
+        if (this.escapar === true) {
+            //Dentro do template. Pegar qualquer <script> quem venha com caractéries com e sem espaço, zero ou mais vezes, mas o menor número de vezes possível. 
+            // Seguidos de </script> e substituir por nada
+            template = template.replace(/<script>[\s\S]*?<\/script>/, '')
+        }
         this.elemento.innerHTML = template;
     }
 

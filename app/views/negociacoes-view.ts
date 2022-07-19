@@ -40,6 +40,7 @@ export class NegociacoesView extends View<TodasNegociacoes> {
                   `
               }).join('')}
                 </tbody>
+                <script>alert('oi')</script>
             </table>
         `
     }

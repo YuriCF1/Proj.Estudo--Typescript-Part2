@@ -20,7 +20,7 @@ export class NegociacaoController {
     // private negociacoes: Negociacoes = new Negociacoes()
     private negociacoesTodas = new TodasNegociacoes()
     //_________________________PARTE 2____________________
-    private negociacoesView = new NegociacoesView('#negociacoesView');
+    private negociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView = new MensagemView('#mensagemView');
 
     //É melhor usar o enumeration para todar essas constancias de uso universais
