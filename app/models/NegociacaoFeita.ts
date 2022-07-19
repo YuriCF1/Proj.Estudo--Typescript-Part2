@@ -104,7 +104,7 @@ export class NegociacaoFeita {
     }
 
     // Criando a negociação através de um arquivode texto. Strings
-    public pegaString(dataString: string, quantidadeString: string, valorString: string): NegociacaoFeita {
+    public static pegaString(dataString: string, quantidadeString: string, valorString: string): NegociacaoFeita {
         //Tipando também o método para garantir que ele sempre volte negociacao
         //E não outro valor que eu coloque por acidente
         const exp = /-/g;

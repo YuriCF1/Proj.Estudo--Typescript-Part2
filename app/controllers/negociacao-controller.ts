@@ -80,8 +80,8 @@ export class NegociacaoController {
 
     public adiciona(): void {
         // const trader = this.pegaValor();
-        const negociacaoString = new NegociacaoFeita(null, 0, 0);
-        const trader = negociacaoString.pegaString(
+        // const negociacaoString = new NegociacaoFeita(null, 0, 0);
+        const trader = NegociacaoFeita.pegaString(
             this.inputData.value, 
             this.inputQuantidade.value,
             this.inputValor.value
