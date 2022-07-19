@@ -4,8 +4,8 @@
 // A view sendo 'abstract' não pode ser instanciada diretamente, apenas dentro de uma classe filha
 
 export abstract class View<T> {
-// export class View<T> {
-        // private elemento: HTMLElement;
+    // export class View<T> {
+    // private elemento: HTMLElement;
     protected elemento: HTMLElement;
 
     // constructor(seletor: string) {
