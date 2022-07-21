@@ -8,5 +8,3 @@ export var DiasDaSemana;
     DiasDaSemana[DiasDaSemana["SEXTA"] = 5] = "SEXTA";
     DiasDaSemana[DiasDaSemana["SABADO"] = 6] = "SABADO";
 })(DiasDaSemana || (DiasDaSemana = {}));
-// Posso usar variáveis 
-// const X = DiasDaSemana.DOMINGO

@@ -148,4 +148,5 @@ export class NegociacaoController {
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
         this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
     }
+
 }
