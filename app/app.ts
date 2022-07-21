@@ -10,17 +10,26 @@
 // // console.log(negociacao.quantidad);
 // console.log(negociacao.quantidade);
 
-//Capítulo 3
+//__________________Capítulo 3
 import { NegociacaoController } from "./controllers/negociacao-controller.js";
 const controller = new NegociacaoController();
 const form = document.querySelector(".form");
-form.addEventListener("submit", (event) => {
-  //(event: Event), por baixo dos panos.
-  //Mas automaticamente já é inferido que a função é baseada num evento do tipo submit
-  //Por conta do addEventListenner
-  event.preventDefault();
-  controller.adiciona();
-});
+
+//__________________Capítulo 4
+if (form) {
+  form.addEventListener("submit", (event) => {
+    //(event: Event), por baixo dos panos.
+    //Mas automaticamente já é inferido que a função é baseada num evento do tipo submit
+    //Por conta do addEventListenner
+    event.preventDefault();
+    controller.adiciona();
+  });
+
+} else {
+  throw Error('Não foi possiível iniciar a aplicação, pois o form parece ser inexistente.')
+
+}
+
 
 //______________________________________PARTE 2___________________
 

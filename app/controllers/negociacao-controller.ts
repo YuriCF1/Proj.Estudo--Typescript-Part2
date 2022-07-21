@@ -35,9 +35,11 @@ export class NegociacaoController {
 
     //Quando a classe NegociacaoController for chamada, ela usará o 'constructor' para pegar os dados
     constructor() {
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        // A maaneira mais recomendada é a de baixo
+        // this.inputData = <HTMLInputElement> document.querySelector('#data');
+        this.inputData = document.querySelector('#data') as HTMLInputElement;
+        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         //_________________________PARTE 2____________________
         // this.negociacoesView.template();
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
