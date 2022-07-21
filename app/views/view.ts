@@ -13,7 +13,17 @@ export abstract class View<T> {
 
     // constructor(seletor: string) {
     constructor(seletor: string, escapar?: boolean) {
-        this.elemento = document.querySelector(seletor)
+        const elementoVerificado = document.querySelector(seletor);
+        // this.elemento = document.querySelector(seletor)
+
+        if(elementoVerificado) {
+            this.elemento = elementoVerificado as HTMLElement
+
+        } else {
+            throw Error (`Seletor ${seletor} não existe no DOM. Verifique.`)
+
+        }
+
         if(escapar) {
             this.escapar = escapar;
 
