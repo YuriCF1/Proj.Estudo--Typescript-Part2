@@ -1,4 +1,4 @@
-import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
+import { TodasNegociacoes } from "../../models/TodasNegociacoes.js";
 
 import { View } from "./view.js";
 

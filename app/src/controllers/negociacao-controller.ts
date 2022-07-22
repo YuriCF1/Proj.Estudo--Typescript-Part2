@@ -1,8 +1,8 @@
 import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 //_________________________PARTE 2____________________
-import { NegociacoesView } from "../views/negociacoes-view.js";
-import { MensagemView } from "../views/mensagem-view.js";
+import { NegociacoesView } from "./views/negociacoes-view.js";
+import { MensagemView } from "./views/mensagem-view.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 
 //Exporing the main class
