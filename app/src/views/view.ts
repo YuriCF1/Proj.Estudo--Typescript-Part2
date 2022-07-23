@@ -35,7 +35,7 @@ export abstract class View<T> {
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
         // _________PART 3_________
-        const t1 = performance.now();
+        // const t1 = performance.now();
         
         // const template = this.template(modelo)
         let template = this.template(modelo);
@@ -47,8 +47,8 @@ export abstract class View<T> {
         }
         this.elemento.innerHTML = template;
         
-        const t2 = performance.now();
-        console.log(`Tempo de execução do método atualizaTela: ${(t2-t1)/1000} segundos` );
+        // const t2 = performance.now();
+        // console.log(`Tempo de execução do método atualizaTela: ${(t2-t1)/1000} segundos` );
 
     }
 

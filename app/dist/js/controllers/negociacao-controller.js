@@ -1,8 +1,15 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 import { NegociacaoFeita } from "../models/NegociacaoFeita.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
+import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoesTodas = new TodasNegociacoes();
@@ -21,7 +28,6 @@ export class NegociacaoController {
         return new NegociacaoFeita(date, quantidade, valor);
     }
     adiciona() {
-        const t1 = performance.now();
         const trader = NegociacaoFeita.pegaString(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         if (!this.ehDiautil(trader.data)) {
             this.mensagemView.atualizaTela('Apenas Negociações em dias úteis são aceitas');
@@ -30,8 +36,6 @@ export class NegociacaoController {
         this.negociacoesTodas.adicionaTrade(trader);
         this.limparFormulario();
         this.atualizaView();
-        const t2 = performance.now();
-        console.log(`Tempo de execução do método adiciona: ${(t2 - t1) / 1000} segundos`);
     }
     ehDiautil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO &&
@@ -48,3 +52,6 @@ export class NegociacaoController {
         this.mensagemView.atualizaTela('Negociação adicionada com sucesso');
     }
 }
+__decorate([
+    logarTempoDeExecucacao()
+], NegociacaoController.prototype, "adiciona", null);

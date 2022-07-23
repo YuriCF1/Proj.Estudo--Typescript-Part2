@@ -4,8 +4,13 @@
         "target": "ES6",
         "noEmitOnError": true,
         "noImplicitAny": true,
+
+        // Parte 2
         "removeComments": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+
+        // Parte 3
+        "experimentalDecorators": true
     },
     "include": ["app/src/**/*"]
 }

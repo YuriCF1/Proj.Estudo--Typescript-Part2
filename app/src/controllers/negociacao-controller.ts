@@ -5,6 +5,9 @@ import { NegociacoesView } from "../views/negociacoes-view.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 
+//_________________________PARTE 3____________________
+import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
+
 //Exporing the main class
 export class NegociacaoController {
     //Assim que ela for instanciado
@@ -80,9 +83,12 @@ export class NegociacaoController {
     
     }
 
+    @logarTempoDeExecucacao()
+
     public adiciona(): void {
         // _________PART 3_________
-        const t1 = performance.now();
+        // const t1 = performance.now();
+
         // const trader = this.pegaValor();
         // const negociacaoString = new NegociacaoFeita(null, 0, 0);
         const trader = NegociacaoFeita.pegaString(
@@ -107,8 +113,8 @@ export class NegociacaoController {
         this.limparFormulario()
         this.atualizaView();
 
-        const t2 = performance.now();
-        console.log(`Tempo de execução do método adiciona: ${(t2-t1)/1000} segundos` );
+        // const t2 = performance.now();
+        // console.log(`Tempo de execução do método adiciona: ${(t2-t1)/1000} segundos` );
 
         //______________________________________PARTE 2___________________
         //Atualizando a tela com a string da lista de negociações usando o template string
