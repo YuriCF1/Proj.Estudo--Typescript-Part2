@@ -11,7 +11,7 @@
 // console.log(negociacao.quantidade);
 
 //__________________Capítulo 3
-import { NegociacaoController } from "./src/controllers/negociacao-controller.js";
+import { NegociacaoController } from "./controllers/negociacao-controller.js";
 const controller = new NegociacaoController();
 const form = document.querySelector(".form");
 
@@ -34,7 +34,7 @@ if (form) {
 //______________________________________PARTE 2___________________
 
 //Exemplo feito para aparecer o template no console. Após isso, foi feito pelo modo do template diretamente no controller
-import { NegociacoesView } from "./src/controllers/views/negociacoes-view.js";
+import { NegociacoesView } from "./views/negociacoes-view.js";
 // const negociacoesView = new NegociacoesView();
 // const template = negociacoesView.template();
 // console.log(template)

@@ -6,8 +6,6 @@
         "noImplicitAny": true,
         "removeComments": true,
         "strictNullChecks": true
-    }, 
-
-    "include": ["app/**/*"]
-
+    },
+    "include": ["app/src/**/*"]
 }
