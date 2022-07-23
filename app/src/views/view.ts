@@ -34,6 +34,9 @@ export abstract class View<T> {
 
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
+        // _________PART 3_________
+        const t1 = performance.now();
+        
         // const template = this.template(modelo)
         let template = this.template(modelo);
 
@@ -43,6 +46,10 @@ export abstract class View<T> {
             template = template.replace(/<script>[\s\S]*?<\/script>/, '')
         }
         this.elemento.innerHTML = template;
+        
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método atualizaTela: ${(t2-t1)/1000} segundos` );
+
     }
 
     //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha

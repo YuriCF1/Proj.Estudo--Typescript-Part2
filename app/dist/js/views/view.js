@@ -13,10 +13,13 @@ export class View {
         }
     }
     atualizaTela(modelo) {
+        const t1 = performance.now();
         let template = this.template(modelo);
         if (this.escapar === true) {
             template = template.replace(/<script>[\s\S]*?<\/script>/, '');
         }
         this.elemento.innerHTML = template;
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método atualizaTela: ${(t2 - t1) / 1000} segundos`);
     }
 }

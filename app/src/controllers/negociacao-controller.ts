@@ -81,6 +81,8 @@ export class NegociacaoController {
     }
 
     public adiciona(): void {
+        // _________PART 3_________
+        const t1 = performance.now();
         // const trader = this.pegaValor();
         // const negociacaoString = new NegociacaoFeita(null, 0, 0);
         const trader = NegociacaoFeita.pegaString(
@@ -104,6 +106,10 @@ export class NegociacaoController {
 
         this.limparFormulario()
         this.atualizaView();
+
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método adiciona: ${(t2-t1)/1000} segundos` );
+
         //______________________________________PARTE 2___________________
         //Atualizando a tela com a string da lista de negociações usando o template string
         //Separando a responsabilidade, centralizando as atualizações da view. Movi esses métodos para 'atualizaView'
