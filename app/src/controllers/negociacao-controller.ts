@@ -84,7 +84,6 @@ export class NegociacaoController {
     }
 
     @logarTempoDeExecucacao()
-
     public adiciona(): void {
         // _________PART 3_________
         // const t1 = performance.now();

@@ -3,6 +3,9 @@
 //O 'T' funciona como uma variável de tipo a ser declarada no extends
 // A view sendo 'abstract' não pode ser instanciada diretamente, apenas dentro de uma classe filha
 
+//_________PART 3_________
+import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
+
 export abstract class View<T> {
     // export class View<T> {
     // private elemento: HTMLElement;
@@ -32,6 +35,7 @@ export abstract class View<T> {
 
     }
 
+    @logarTempoDeExecucacao()
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
         // _________PART 3_________
