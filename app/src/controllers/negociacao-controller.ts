@@ -141,7 +141,7 @@ export class NegociacaoController {
 
     }
 
-    // Parte 2
+    //________Parte 2_______
     private ehDiautil(data: Date) {
         // return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
         return data.getDay() > DiasDaSemana.DOMINGO && 
