@@ -1,5 +1,5 @@
 //Esqueleto principal de um decorator
-export function logarTempoDeExecucacao() {
+export function logarTempoDeExecucacao(emSegundo: boolean = false) {
     return function (
         target: any,
         propertyKey: string,
@@ -7,6 +7,13 @@ export function logarTempoDeExecucacao() {
     {
         const metodoOriginal = descriptor.value;
         descriptor.value = function(...args: any[]){
+            let divisor = 1;
+            let unidade = 'milisegundos';
+            if(emSegundo) {
+                divisor = 1000;
+                unidade = 'segundos'
+            }
+
             //Aceita vários parâmetros, e transforma em uma array de qualquer tipo
             // descriptor.value = function(...args: Array<any>){
             const t1  = performance.now();
@@ -21,7 +28,7 @@ export function logarTempoDeExecucacao() {
             const retorno = metodoOriginal.apply(this, args);
 
             const t2  = performance.now();
-            console.log(`${propertyKey}, tempo de execucação: ${(t2-t1)/1000}`);
+            console.log(`${propertyKey}, tempo de execucação: ${(t2-t1)/1000} ${unidade}`);
             
             retorno
         }

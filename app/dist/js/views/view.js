@@ -28,5 +28,5 @@ export class View {
     }
 }
 __decorate([
-    logarTempoDeExecucacao()
+    logarTempoDeExecucacao(true)
 ], View.prototype, "atualizaTela", null);

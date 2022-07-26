@@ -35,7 +35,7 @@ export abstract class View<T> {
 
     }
 
-    @logarTempoDeExecucacao()
+    @logarTempoDeExecucacao(true)
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
         // _________PART 3_________
