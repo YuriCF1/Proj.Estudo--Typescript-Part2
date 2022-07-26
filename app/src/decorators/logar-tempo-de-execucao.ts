@@ -7,7 +7,7 @@ export function logarTempoDeExecucacao(emSegundo: boolean = false) {
     {
         const metodoOriginal = descriptor.value;
         descriptor.value = function(...args: any[]){
-            console.log('Inicio');
+            console.log('Inicio dos decorators');
             let divisor = 1;
             let unidade = 'milisegundos';
             if(emSegundo) {
