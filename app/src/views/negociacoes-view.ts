@@ -1,3 +1,4 @@
+import { escape } from "../decorators/escape.js";
 import { TodasNegociacoes } from "../models/TodasNegociacoes.js";
 
 import { View } from "./view.js";
@@ -18,6 +19,7 @@ export class NegociacoesView extends View<TodasNegociacoes> {
     
     // Intl = um formatador de parâmetro globlais. DateTimeFormat('en-US'), padrão é da localização do navegador
     //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
+    @escape
     protected template(modelo: TodasNegociacoes): string {
         //Antes estava assim <td>${new Intl.DateTimeFormat().format(itemNegociado.data)}</td>
         return `

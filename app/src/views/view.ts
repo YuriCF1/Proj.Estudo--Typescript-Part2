@@ -14,10 +14,11 @@ export abstract class View<T> {
     protected elemento: HTMLElement;
 
     // private escapar: boolean = false;
-    private escapar = false;
+    // private escapar = false; ___Antes do decorator escape
 
     // constructor(seletor: string) {
-    constructor(seletor: string, escapar?: boolean) {
+    // constructor(seletor: string, escapar?: boolean) { ___Antes do decorator escape
+    constructor(seletor: string) {
         const elementoVerificado = document.querySelector(seletor);
         // this.elemento = document.querySelector(seletor)
 
@@ -29,10 +30,10 @@ export abstract class View<T> {
 
         }
 
-        if(escapar) {
-            this.escapar = escapar;
+        // if(escapar) {
+        //     this.escapar = escapar;
 
-        }
+        // }     ___Antes do decorator escape
 
 
     }
@@ -40,6 +41,7 @@ export abstract class View<T> {
     @logarTempoDeExecucacao(true)
     @inspect()
     //Public é sempre o padrão, caso nada seja escrito
+    //O T garante que o tipo que foi chamado em outra classe será executado aqui também.
     public atualizaTela(modelo: T): void {
         // _________PART 3_________
         // const t1 = performance.now();
@@ -47,11 +49,13 @@ export abstract class View<T> {
         // const template = this.template(modelo)
         let template = this.template(modelo);
 
-        if (this.escapar === true) {
+        // if (this.escapar === true) {
             //Dentro do template. Pegar qualquer <script> quem venha com caractéries com e sem espaço, zero ou mais vezes, mas o menor número de vezes possível. 
             // Seguidos de </script> e substituir por nada
-            template = template.replace(/<script>[\s\S]*?<\/script>/, '')
-        }
+            // template = template.replace(/<script>[\s\S]*?<\/script>/, '')
+            // O escape acima foi transformado em um decorator
+        // } ___Antes do decorator escape
+        
         this.elemento.innerHTML = template;
         
         // const t2 = performance.now();

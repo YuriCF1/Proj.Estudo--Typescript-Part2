@@ -13,7 +13,7 @@ import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js
 export class NegociacaoController {
     constructor() {
         this.negociacoesTodas = new TodasNegociacoes();
-        this.negociacoesView = new NegociacoesView('#negociacoesView', true);
+        this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
