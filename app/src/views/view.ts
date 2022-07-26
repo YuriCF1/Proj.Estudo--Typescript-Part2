@@ -4,8 +4,10 @@
 // A view sendo 'abstract' não pode ser instanciada diretamente, apenas dentro de uma classe filha
 
 //_________PART 3_________
+import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
 
+//Classe abstrata: Não se pode criar uma instância diretamente dela. Só se o filho herdar essa classe, e eu criar uma instância dele
 export abstract class View<T> {
     // export class View<T> {
     // private elemento: HTMLElement;
@@ -36,6 +38,7 @@ export abstract class View<T> {
     }
 
     @logarTempoDeExecucacao(true)
+    @inspect()
     //Public é sempre o padrão, caso nada seja escrito
     public atualizaTela(modelo: T): void {
         // _________PART 3_________
@@ -57,6 +60,8 @@ export abstract class View<T> {
     }
 
     //Nao faz sentido esse método estar exposto na classe controller, já que é reponsabilidade da classe filha
+    //__________O método abstract exige que seja definido quando ele for chamado em outra classe
+    //__________O protected diz que só a classe pai e filhas podem ter acesso ao método
     protected abstract template(modelo: T): string;
 }
 // template(modelo: string): string {
