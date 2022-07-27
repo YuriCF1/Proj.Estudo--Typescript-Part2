@@ -7,16 +7,24 @@ import { DiasDaSemana } from "../enums/dias-da-semana.js";
 
 //_________________________PARTE 3____________________
 import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
+import { inspect } from "../decorators/inspect.js";
+import { domInjector } from "../decorators/dom-injector.js";
 
 //Exporing the main class
 export class NegociacaoController {
-    //Assim que ela for instanciado
+    //Assim que ela for instanciada
     //ter o input da data, quantidade e valor
 
     //Eu preciso colocar o HTMLInputElement, pois o tipo da variável só é definida no construtor. 
     //Poderia ser feita assim === private inputData = 'nome';
+    
+    @domInjector('#data')
     private inputData: HTMLInputElement;
+    
+    @domInjector('#quantidade')
     private inputQuantidade: HTMLInputElement;
+    
+    @domInjector('#valor')
     private inputValor: HTMLInputElement;
 
     //Propriedade criada no módulo 4. Arquivo 'negocicoes.ts'
@@ -40,10 +48,13 @@ export class NegociacaoController {
     //Quando a classe NegociacaoController for chamada, ela usará o 'constructor' para pegar os dados
     constructor() {
         // A maaneira mais recomendada é a de baixo
+        // Antes do decorator dom-injector
+        
         // this.inputData = <HTMLInputElement> document.querySelector('#data');
-        this.inputData = document.querySelector('#data') as HTMLInputElement;
-        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
-        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
+        // this.inputData = document.querySelector('#data') as HTMLInputElement;
+        // this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        // this.inputValor = document.querySelector('#valor') as HTMLInputElement;
+        
         //_________________________PARTE 2____________________
         // this.negociacoesView.template();
         this.negociacoesView.atualizaTela(this.negociacoesTodas);
@@ -84,6 +95,8 @@ export class NegociacaoController {
     
     }
 
+    
+    @inspect()
     @logarTempoDeExecucacao()
     public adiciona(): void {
         // _________PART 3_________

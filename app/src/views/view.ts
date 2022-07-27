@@ -38,8 +38,10 @@ export abstract class View<T> {
 
     }
 
-    @logarTempoDeExecucacao(true)
-    @inspect()
+    // @logarTempoDeExecucacao(true)
+    // @inspect()
+
+    
     //Public é sempre o padrão, caso nada seja escrito
     //O T garante que o tipo que foi chamado em outra classe será executado aqui também.
     public atualizaTela(modelo: T): void {
