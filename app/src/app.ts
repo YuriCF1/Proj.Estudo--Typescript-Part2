@@ -30,7 +30,18 @@ if (form) {
 
 }
 
+const botaoImporta = document.querySelector('#botao-importa');
 
+if (botaoImporta) {
+  botaoImporta.addEventListener('click', () => {
+    controller.importarDados();
+
+  })
+
+} else {
+  throw Error(`Botão 'Importa' não foi encontrado`)
+
+}
 //______________________________________PARTE 2___________________
 
 //Exemplo feito para aparecer o template no console. Após isso, foi feito pelo modo do template diretamente no controller

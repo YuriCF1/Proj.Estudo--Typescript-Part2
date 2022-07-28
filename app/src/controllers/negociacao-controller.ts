@@ -155,6 +155,12 @@ export class NegociacaoController {
 
     }
 
+    //________Parte 3_______
+    importarDados(): void {
+        console.log('oi');
+
+    }
+
     //________Parte 2_______
     private ehDiautil(data: Date) {
         // return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
