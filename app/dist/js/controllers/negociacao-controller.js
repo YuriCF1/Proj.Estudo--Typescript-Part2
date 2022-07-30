@@ -37,7 +37,20 @@ export class NegociacaoController {
         this.atualizaView();
     }
     importarDados() {
-        console.log('oi');
+        fetch('http://localhost:8080/dados')
+            .then(resposta => resposta.json())
+            .then((dados) => {
+            return dados.map(dadosDeHoje => {
+                ;
+                return new NegociacaoFeita(new Date(), dadosDeHoje.vezes, dadosDeHoje.montante);
+            });
+        })
+            .then(negociacaoesDeAPI => {
+            for (let negociacaoMap of negociacaoesDeAPI) {
+                this.negociacoesTodas.adicionaTrade(negociacaoMap);
+            }
+            this.negociacoesView.atualizaTela(this.negociacoesTodas);
+        });
     }
     ehDiautil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO &&
