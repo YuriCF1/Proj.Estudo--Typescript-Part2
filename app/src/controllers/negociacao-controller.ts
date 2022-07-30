@@ -10,6 +10,7 @@ import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { NegociacoesAPI } from "../interfaces/negociacao-do-dia.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -35,6 +36,9 @@ export class NegociacaoController {
     // private negociacoesView = new NegociacoesView('#negociacoesView', true); ___Antes do decorator escape
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
+
+    // _________PART 3_________
+    private negociacoesService = new NegociacoesService
 
     //É melhor usar o enumeration para todar essas constancias de uso universais
     // private readonly SABADO = 6;
@@ -158,42 +162,60 @@ export class NegociacaoController {
 
     //________Parte 3_______
     public importarDados(): void {
-        fetch('http://localhost:8080/dados')
-            // .then(resposta => {
-            //     return resposta.json();
-            //Mesma coisa disso
-            .then(resposta => resposta.json()) //Tenho certeza que o retorno eu posso transformar para JSON. E O RESULTADO DISSO, VAI DIRETO PARA A PRÓXIMA CHAMADA ENCADEADA DO .then
-            // .then((dados: Array<any>) =>{
-                //Sem interface
-            // .then((dados: any[]) =>{
-                //Com interface, para certificar que os nomes de 'vezes' e 'montante' da API serão chamados corretamente
-            .then((dados: NegociacoesAPI[]) =>{
-                // O método map() invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.
-                // The Array.map() method creates a new array from the results of calling a function for every element.
+        // O service faz tudo que ta comentado aí embaixo
+        this.negociacoesService
+        .obterNegociacoesDaApi()
+        // Agora o TS sabe que o RETORNO DO MAP, obviamente é um ARRAY, agora vem até AutoComplete
+         .then(negociacaoesDeAPI => { //Para cada item retornado do map
+            for (let negociacaoMap of negociacaoesDeAPI){ //Variável criada a partir de cada item dentro da API do map
+                this.negociacoesTodas.adicionaTrade(negociacaoMap) //Chamando o método de adicionar para cada item do MAP
+            }
+            this.negociacoesView.atualizaTela(this.negociacoesTodas) //Agora, para cada negociação criada acima, vai mmandar pra view
+            
+            
+        });
 
-                // A API não dá a data, é sempre a data de hoje. Então tenho que definir, e passar as vezes e o montante da API
-                //Já que eu coloquei que é um array ali em cima, o TS me mostra os métodos de array (map)
-                return dados.map(dadosDeHoje => { ; //O map retorna dados convertidos para uma INSTANCIA DE NEGOCIAÇÃO do dia de hoje. E agora vem um forEach com outro .then
-                     return new NegociacaoFeita(
-                        new Date(), //Data
-                        dadosDeHoje.vezes, //Quantidade 
-                        dadosDeHoje.montante) //Valor
-
-                // Já que é um JSON, esse código já vai vim com valores tipo Number, então não precisa de uma função pegaString, no arquivo NegociacaoFeita.ts
-                })
-
-            })
-            // Agora o TS sabe que o RETORNO DO MAP, obviamente é um ARRAY, agora vem até AutoComplete
-            .then(negociacaoesDeAPI => { //Para cada item retornado do map
-                for (let negociacaoMap of negociacaoesDeAPI){ //Variável criada a partir de cada item dentro da API do map
-                    this.negociacoesTodas.adicionaTrade(negociacaoMap) //Chamando o método de adicionar para cada item do MAP
-                }
-                this.negociacoesView.atualizaTela(this.negociacoesTodas) //Agora, para cada negociação criada acima, vai mmandar pra view
-
-
-            });
+        
+        // ___________ISSO TUDO AQUI_____________________
+        // Antes da Promise, se fazia o fetch aqui. Mandei para lá para caso os dados seja reutilizados 
+        // fetch('http://localhost:8080/dados')
+        //     // .then(resposta => {
+            //     //     return resposta.json();
+            //     //Mesma coisa disso
+            //     .then(resposta => resposta.json()) //Tenho certeza que o retorno eu posso transformar para JSON. E O RESULTADO DISSO, VAI DIRETO PARA A PRÓXIMA CHAMADA ENCADEADA DO .then
+            //     // .then((dados: Array<any>) =>{
+                //         //Sem interface
+                //     // .then((dados: any[]) =>{
+                    //         //Com interface, para certificar que os nomes de 'vezes' e 'montante' da API serão chamados corretamente
+                    //     .then((dados: NegociacoesAPI[]) =>{
+                        //         // O método map() invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.
+                        //         // The Array.map() method creates a new array from the results of calling a function for every element.
+                        
+                        //         // A API não dá a data, é sempre a data de hoje. Então tenho que definir, e passar as vezes e o montante da API
+                        //         //Já que eu coloquei que é um array ali em cima, o TS me mostra os métodos de array (map)
+                        //         return dados.map(dadosDeHoje => { ; //O map retorna dados convertidos para uma INSTANCIA DE NEGOCIAÇÃO do dia de hoje. E agora vem um forEach com outro .then
+                        //              return new NegociacaoFeita(
+                            //                 new Date(), //Data
+                            //                 dadosDeHoje.vezes, //Quantidade 
+                            //                 dadosDeHoje.montante) //Valor
+                            
+                            //         // Já que é um JSON, esse código já vai vim com valores tipo Number, então não precisa de uma função pegaString, no arquivo NegociacaoFeita.ts
+                            //         })
+                            
+                            //     })
+                            
+        // ___________ISSO TUDO ATÉ AQUI, E AÍ REPETE O PROCESSO LÁ DE CIMA_____________________
+        // .then(negociacaoesDeAPI => { //Para cada item retornado do map
+        //     for (let negociacaoMap of negociacaoesDeAPI){ //Variável criada a partir de cada item dentro da API do map
+        //         this.negociacoesTodas.adicionaTrade(negociacaoMap) //Chamando o método de adicionar para cada item do MAP
+        //     }
+        //     this.negociacoesView.atualizaTela(this.negociacoesTodas) //Agora, para cada negociação criada acima, vai mmandar pra view
+            
+            
+        // });
+            
     }
-
+                        
     //________Parte 2_______
     private ehDiautil(data: Date) {
         // return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
