@@ -9,6 +9,7 @@ import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js";
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
+import { NegociacoesAPI } from "../interfaces/negociacao-do-dia.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -163,7 +164,10 @@ export class NegociacaoController {
             //Mesma coisa disso
             .then(resposta => resposta.json()) //Tenho certeza que o retorno eu posso transformar para JSON. E O RESULTADO DISSO, VAI DIRETO PARA A PRÓXIMA CHAMADA ENCADEADA DO .then
             // .then((dados: Array<any>) =>{
-            .then((dados: any[]) =>{
+                //Sem interface
+            // .then((dados: any[]) =>{
+                //Com interface, para certificar que os nomes de 'vezes' e 'montante' da API serão chamados corretamente
+            .then((dados: NegociacoesAPI[]) =>{
                 // O método map() invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.
                 // The Array.map() method creates a new array from the results of calling a function for every element.
 
