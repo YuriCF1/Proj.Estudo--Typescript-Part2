@@ -35,6 +35,8 @@ export class NegociacaoController {
             return;
         }
         this.negociacoesTodas.adicionaTrade(trader);
+        console.log(trader.exibeConsole());
+        console.log(this.negociacoesTodas.exibeConsole());
         this.limparFormulario();
         this.atualizaView();
     }

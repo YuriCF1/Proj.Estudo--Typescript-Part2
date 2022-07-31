@@ -121,8 +121,24 @@ export class NegociacaoController {
             return
         }
 
-        this.negociacoesTodas.adicionaTrade(trader)
+        this.negociacoesTodas.adicionaTrade(trader) 
         
+        //________Parte 3_______
+        console.log(trader.exibeConsole());
+        console.log(this.negociacoesTodas.exibeConsole());
+
+
+        //Antes dos métodos exibeConsole
+            // console.log(`
+            //     Data: ${trader.data},
+            //     Quantidade: ${trader.quantidade},
+            //     Valor: ${trader.valor},
+            // `);
+
+            // console.log(JSON.stringify(this.negociacoesTodas, null, 2));
+        //________Parte 3 até aqui_______
+        
+
         //Teste
         // const novaData = trader.data.setTime(10)
         // console.log(this.negociacoesTodas.listagem()); 

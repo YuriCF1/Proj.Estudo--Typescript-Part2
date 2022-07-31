@@ -8,4 +8,7 @@ export class TodasNegociacoes {
     listagem() {
         return this.Todasnegociacoes;
     }
+    exibeConsole() {
+        return (JSON.stringify(this.Todasnegociacoes, null, 2));
+    }
 }

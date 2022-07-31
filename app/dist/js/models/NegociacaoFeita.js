@@ -4,6 +4,13 @@ export class NegociacaoFeita {
         this.quantidade = quantidade;
         this.valor = valor;
     }
+    static pegaString(dataString, quantidadeString, valorString) {
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new NegociacaoFeita(date, quantidade, valor);
+    }
     get volume() {
         return this.quantidade * this.valor;
     }
@@ -11,11 +18,11 @@ export class NegociacaoFeita {
         const dataClone = new Date(this._data.getTime());
         return dataClone;
     }
-    static pegaString(dataString, quantidadeString, valorString) {
-        const exp = /-/g;
-        const date = new Date(dataString.replace(exp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-        return new NegociacaoFeita(date, quantidade, valor);
+    exibeConsole() {
+        return (`
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor},
+        `);
     }
 }

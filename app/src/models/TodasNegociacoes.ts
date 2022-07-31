@@ -19,6 +19,7 @@ export class TodasNegociacoes {
         return this.Todasnegociacoes;
 
     }
+    
     //Métodos antigos
 
     //     // return this.Todasnegociacoes
@@ -27,6 +28,13 @@ export class TodasNegociacoes {
     //     //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax
     //     //https://www.youtube.com/watch?v=Uft_UkXtqT0&ab_channel=DevPleno
     //     // return [...this.Todasnegociacoes]
+
+    //________Parte 3_______
+    public exibeConsole(): string {
+        return (JSON.stringify(this.Todasnegociacoes, null, 2));
+    }
+
+
 }
 
 // const Todasnegociacoes = new TodasNegociacoes();

@@ -73,6 +73,18 @@ export class NegociacaoFeita {
         public readonly valor: number
     ) { }
 
+    // Criando a negociação através de um arquivode texto. Strings
+    public static pegaString(dataString: string, quantidadeString: string, valorString: string): NegociacaoFeita {
+        //Tipando também o método para garantir que ele sempre volte negociacao
+        //E não outro valor que eu coloque por acidente
+        const exp = /-/g;
+
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new NegociacaoFeita(date, quantidade, valor);
+    }
+
     // get data(): Date {
     //     return this._data
 
@@ -103,17 +115,16 @@ export class NegociacaoFeita {
 
     }
 
-    // Criando a negociação através de um arquivode texto. Strings
-    public static pegaString(dataString: string, quantidadeString: string, valorString: string): NegociacaoFeita {
-        //Tipando também o método para garantir que ele sempre volte negociacao
-        //E não outro valor que eu coloque por acidente
-        const exp = /-/g;
-
-        const date = new Date(dataString.replace(exp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-        return new NegociacaoFeita(date, quantidade, valor);
+    //________Parte 3_______
+    public exibeConsole(): string {
+        return (`
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor},
+        `);
     }
+
+
 
 }
 
