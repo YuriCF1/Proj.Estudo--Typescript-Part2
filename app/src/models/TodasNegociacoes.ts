@@ -1,6 +1,7 @@
+import { Imprimivel } from "../utils/imprimivel.js";
 import { NegociacaoFeita } from "./NegociacaoFeita.js";
 
-export class TodasNegociacoes {
+export class TodasNegociacoes extends Imprimivel {
     //O tipo é array, e é bom dizer o tipo dele. Para que só aceite um tipo de dado.
     //Essa é a ferramente 'generics'
     //Por padrão, o tipo é 'any', mas com a config 'noimplicityany' ativada, tenho que fazer isso

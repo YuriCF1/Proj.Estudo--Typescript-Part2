@@ -13,6 +13,7 @@ import { logarTempoDeExecucacao } from "../decorators/logar-tempo-de-execucao.js
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { NegociacoesService } from "../services/negociacoes-service.js";
+import { Imprimir } from "../utils/imprimir.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoesTodas = new TodasNegociacoes();
@@ -35,8 +36,7 @@ export class NegociacaoController {
             return;
         }
         this.negociacoesTodas.adicionaTrade(trader);
-        console.log(trader.exibeConsole());
-        console.log(this.negociacoesTodas.exibeConsole());
+        Imprimir(trader, this.negociacoesTodas);
         this.limparFormulario();
         this.atualizaView();
     }

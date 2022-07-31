@@ -3,6 +3,8 @@
 //     #quantidade;
 //     #valor;
 
+import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
+
 //     constructor(data, quantidade, valor) {
 //         this.#data = data;
 //         this.#quantidade = quantidade;
@@ -40,7 +42,7 @@
 //     this._valor = valor;
 // }
 
-export class NegociacaoFeita {
+export class NegociacaoFeita extends Imprimivel {
 //     constructor(
 //         private _data: Date,
 //         private _quantidade: number,
@@ -71,7 +73,12 @@ export class NegociacaoFeita {
         private _data: Date,
         public readonly quantidade: number,
         public readonly valor: number
-    ) { }
+    ) {
+        // Tenho que garantir a chamada do construro da Imprimivel
+        super()
+    }
+
+    
 
     // Criando a negociação através de um arquivode texto. Strings
     public static pegaString(dataString: string, quantidadeString: string, valorString: string): NegociacaoFeita {

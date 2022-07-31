@@ -11,6 +11,7 @@ import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { NegociacoesAPI } from "../interfaces/negociacao-do-dia.js";
 import { NegociacoesService } from "../services/negociacoes-service.js";
+import { Imprimir } from "../utils/imprimir.js";
 
 //Exporing the main class
 export class NegociacaoController {
@@ -124,8 +125,14 @@ export class NegociacaoController {
         this.negociacoesTodas.adicionaTrade(trader) 
         
         //________Parte 3_______
-        console.log(trader.exibeConsole());
-        console.log(this.negociacoesTodas.exibeConsole());
+        // Antes de definir o imprimir com o tipo Imprimivel, issso aqui dá erro
+        // const x = 'Ei'
+        // Imprimir(trader, this.negociacoesTodas, x)
+        Imprimir(trader, this.negociacoesTodas)
+ 
+ 
+        // console.log(trader.exibeConsole());
+        // console.log(this.negociacoesTodas.exibeConsole());
 
 
         //Antes dos métodos exibeConsole
