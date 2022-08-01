@@ -4,6 +4,7 @@
 //     #valor;
 
 // import { Comparavel } from "../interfaces/comparavel.js";
+import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 
 //     constructor(data, quantidade, valor) {
@@ -45,7 +46,7 @@ import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 
 
 // export class NegociacaoFeita extends Imprimivel, x {
-export class NegociacaoFeita implements Imprimivel { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+export class NegociacaoFeita implements Imprimivel, Comparavel<NegociacaoFeita> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
 //     constructor(
 //         private _data: Date,
 //         private _quantidade: number,

@@ -11,4 +11,7 @@ export class TodasNegociacoes {
     exibeConsole() {
         return (JSON.stringify(this.Todasnegociacoes, null, 2));
     }
+    ehIgual(TodasNegociacoes) {
+        return JSON.stringify(this.Todasnegociacoes) === JSON.stringify(TodasNegociacoes.listagem());
+    }
 }

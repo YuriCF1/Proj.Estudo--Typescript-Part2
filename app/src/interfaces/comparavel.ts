@@ -1,4 +1,4 @@
-// export interface Comparavel {
-//     ehIgual(objeto: any): boolean;
+export interface Comparavel<T> {
+    ehIgual(objeto: T): boolean;
 
-// }
+}

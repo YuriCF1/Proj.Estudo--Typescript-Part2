@@ -1,9 +1,9 @@
-// import { Comparavel } from "../interfaces/comparavel.js";
+import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel } from "../utils/imprimivel.js";
 import { NegociacaoFeita } from "./NegociacaoFeita.js";
 
 // export class TodasNegociacoes extends Imprimivel {
-    export class TodasNegociacoes implements Imprimivel { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+    export class TodasNegociacoes implements Imprimivel, Comparavel<TodasNegociacoes> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
 
     //O tipo é array, e é bom dizer o tipo dele. Para que só aceite um tipo de dado.
     //Essa é a ferramente 'generics'
@@ -38,6 +38,9 @@ import { NegociacaoFeita } from "./NegociacaoFeita.js";
         return (JSON.stringify(this.Todasnegociacoes, null, 2));
     }
 
+    public ehIgual(TodasNegociacoes: TodasNegociacoes): boolean {
+        return JSON.stringify(this.Todasnegociacoes) === JSON.stringify(TodasNegociacoes.listagem());
+    }
 
 }
 
