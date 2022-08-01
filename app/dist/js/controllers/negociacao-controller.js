@@ -44,6 +44,12 @@ export class NegociacaoController {
         this.negociacoesService
             .obterNegociacoesDaApi()
             .then(negociacaoesDeAPI => {
+            return negociacaoesDeAPI.filter(negociacaoesDeAPI => {
+                return !this.negociacoesTodas.listagem()
+                    .some(traderDaLista => traderDaLista.ehIgual(negociacaoesDeAPI));
+            });
+        })
+            .then(negociacaoesDeAPI => {
             for (let negociacaoMap of negociacaoesDeAPI) {
                 this.negociacoesTodas.adicionaTrade(negociacaoMap);
             }

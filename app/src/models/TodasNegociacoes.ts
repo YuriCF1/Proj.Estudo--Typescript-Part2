@@ -1,3 +1,4 @@
+// import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel } from "../utils/imprimivel.js";
 import { NegociacaoFeita } from "./NegociacaoFeita.js";
 

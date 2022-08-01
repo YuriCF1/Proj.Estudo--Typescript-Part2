@@ -3,6 +3,7 @@
 //     #quantidade;
 //     #valor;
 
+// import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 
 //     constructor(data, quantidade, valor) {
@@ -135,6 +136,13 @@ export class NegociacaoFeita implements Imprimivel { //Mudando IMPRIMIVEL para o
         `);
     }
 
+    public ehIgual(negociacaoAceita: NegociacaoFeita): boolean {
+        return this.data.getDate() === negociacaoAceita.data.getDate() 
+        && this.data.getMonth() === negociacaoAceita.data.getMonth()
+        && this.data.getFullYear() === negociacaoAceita.data.getFullYear()
+
+
+    }
 
 
 }

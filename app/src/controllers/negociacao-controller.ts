@@ -188,6 +188,20 @@ export class NegociacaoController {
         // O service faz tudo que ta comentado aí embaixo
         this.negociacoesService
         .obterNegociacoesDaApi()
+
+        // Agora eu tenho que filtrar as negociações repetidadas
+        .then(negociacaoesDeAPI => {
+            // Filter cria um array com todos os elementos que passaram no teste
+            return negociacaoesDeAPI.filter(negociacaoesDeAPI => {
+                // Para cada interação do filter, eu retorno verdadeiro ou falso
+                // Em cada item da listagem, se ele ehIgual a negociacao da API, ela retorna 'Sim' e vai passar, por isso o !
+                // Com o ! vira, se ele NÃO estiver na lista, é para passar
+                return !this.negociacoesTodas.listagem()
+                .some(traderDaLista => traderDaLista.ehIgual(negociacaoesDeAPI))
+            })
+        })
+
+
         // Agora o TS sabe que o RETORNO DO MAP, obviamente é um ARRAY, agora vem até AutoComplete
          .then(negociacaoesDeAPI => { //Para cada item retornado do map
             for (let negociacaoMap of negociacaoesDeAPI){ //Variável criada a partir de cada item dentro da API do map
