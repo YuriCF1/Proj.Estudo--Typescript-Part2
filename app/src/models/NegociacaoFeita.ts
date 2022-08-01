@@ -42,7 +42,9 @@ import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 //     this._valor = valor;
 // }
 
-export class NegociacaoFeita extends Imprimivel {
+
+// export class NegociacaoFeita extends Imprimivel, x {
+export class NegociacaoFeita implements Imprimivel { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
 //     constructor(
 //         private _data: Date,
 //         private _quantidade: number,
@@ -74,8 +76,10 @@ export class NegociacaoFeita extends Imprimivel {
         public readonly quantidade: number,
         public readonly valor: number
     ) {
+        // Já que agora estou usando interface, não precisa de super(). Pois não estou extendendo uma classe
+
         // Tenho que garantir a chamada do construro da Imprimivel
-        super()
+        // super()
     }
 
     
