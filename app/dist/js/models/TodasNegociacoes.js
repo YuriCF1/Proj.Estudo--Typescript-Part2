@@ -15,3 +15,4 @@ export class TodasNegociacoes {
         return JSON.stringify(this.Todasnegociacoes) === JSON.stringify(TodasNegociacoes.listagem());
     }
 }
+//# sourceMappingURL=TodasNegociacoes.js.map

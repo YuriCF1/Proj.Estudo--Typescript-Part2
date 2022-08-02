@@ -1,9 +1,13 @@
 import { Comparavel } from "../interfaces/comparavel.js";
+import { interfaceModel } from "../interfaces/interfaceModel.js";
 import { Imprimivel } from "../utils/imprimivel.js";
 import { NegociacaoFeita } from "./NegociacaoFeita.js";
 
 // export class TodasNegociacoes extends Imprimivel {
-    export class TodasNegociacoes implements Imprimivel, Comparavel<TodasNegociacoes> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+    // ANTES EU PRECISAVA PASSAR 2 INTERFACES, MAS AGORA SÓ UMA QUE POSSUE AS DUAS ANTERIORES
+    // export class TodasNegociacoes implements Imprimivel, Comparavel<TodasNegociacoes> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+
+    export class TodasNegociacoes implements interfaceModel<TodasNegociacoes> {
 
     //O tipo é array, e é bom dizer o tipo dele. Para que só aceite um tipo de dado.
     //Essa é a ferramente 'generics'

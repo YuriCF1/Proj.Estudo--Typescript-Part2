@@ -7,6 +7,7 @@
 import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 
+import { interfaceModel } from "../interfaces/interfaceModel.js";
 //     constructor(data, quantidade, valor) {
 //         this.#data = data;
 //         this.#quantidade = quantidade;
@@ -46,7 +47,10 @@ import { Imprimivel as Imprimivel } from "../utils/imprimivel.js";
 
 
 // export class NegociacaoFeita extends Imprimivel, x {
-export class NegociacaoFeita implements Imprimivel, Comparavel<NegociacaoFeita> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+
+// ANTES EU PRECISAVA PASSAR 2 INTERFACES, MAS AGORA SÓ UMA QUE POSSUE AS DUAS ANTERIORES
+// export class NegociacaoFeita implements Imprimivel, Comparavel<NegociacaoFeita> { //Mudando IMPRIMIVEL para o modo INTERFACE, eu uso o IMPLEMENTS
+export class NegociacaoFeita implements interfaceModel<NegociacaoFeita> {
 //     constructor(
 //         private _data: Date,
 //         private _quantidade: number,

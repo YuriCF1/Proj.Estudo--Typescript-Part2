@@ -10,7 +10,8 @@
         "strictNullChecks": true,
 
         // Parte 3
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "sourceMap": true
     },
     "include": ["app/src/**/*"]
 }
