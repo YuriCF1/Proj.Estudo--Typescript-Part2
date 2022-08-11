@@ -17,10 +17,6 @@ Um código feito registrar negociações feitas, tomando dados como Data, quanti
 - JavaScript
 - TypeScript
 
-### Deploy do projeto: https://yuricf1.github.io/Contador_Data/
-
-<img src="https://raw.githubusercontent.com/YuriCF1/Contador_Data/main/assets/img/Thumb.png" alt="imagem do site">
-
 ## 🤝 Colaboradores
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
